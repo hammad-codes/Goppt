@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goppt</title>
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <section class="main swiper mySwiper">
+      <div class="wrapper swiper-wrapper">
+
+        <% for (slide of slides) { %>
+
+        <div class="slide swiper-slide">
+          <img src="<%= slide.imageURL %>" alt="" class="image" />
+          
+          <div class="container">
+            <div class="col-6 image-data">
+                <h2>
+                  <%=slide.title %>
+                </h2>
+                <div class="bg-light">
+                    <ul>
+                        <% for(bullet of slide.content) { %>
+                            <div class="bullet">
+                                <li><span class="text"><%= bullet %></span></li>
+                            </div>
+                            <!-- <br> -->
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+
+              <div class="col-6">
+                <img class="img-fluid rounded " src="<%= slide.imageURL %>" alt="">
+              </div>
+          </div>
+        </div>
+
+        <% } %>
+
+        <div class="slide swiper-slide">
+            <img src="images/background.jpg" alt="" class="image" />
+            <div class="image-data">
+                <h2>
+                    Thanks!
+                </h2>
+                <span class="text">Any Questions ?</span>
+            </div>
+          </div>
+      </div>
+
+      <div class="swiper-button-next nav-btn"></div>
+      <div class="swiper-button-prev nav-btn"></div>
+      <div class="swiper-pagination"></div>
+    </section>
+
+    <!-- Swiper JS -->
+    <script src="/js/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+  </body>
+</html>
